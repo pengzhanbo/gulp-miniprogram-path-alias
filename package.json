@@ -3,11 +3,15 @@
   "version": "0.1.1",
   "description": "小程序路径别名",
   "main": "index.js",
-  "scripts": {
-    "test": "test"
-  },
+  "scripts": {},
+  "keywords": [
+    "gulp",
+    "plugins",
+    "miniprogram",
+    "path-alias"
+  ],
   "author": "pengzhanbo",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "gulp-util": "^3.0.8",
     "through2": "^2.0.3"
