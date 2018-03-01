@@ -1,6 +1,6 @@
 {
   "name": "gulp-miniprogram-path-alias",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "小程序路径别名",
   "main": "index.js",
   "scripts": {},
