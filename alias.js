@@ -5,6 +5,7 @@ let es5 = /require\(['"](.*?)['"]\)/g;
 let es6 = /from\s+['"](.*?)['"]/g;
 // wxml
 let wxml = /<import\s+src=['"](.*?)['"]\s+\/>/g;
+let wxs = /<wxs\s+src=['"](.*?)['"]\s+.*?\s+\/>/g
 // css
 let css = /@import\s+['"](.*?)['"]/g;
 
@@ -18,11 +19,13 @@ module.exports = function alias(options, content, _filePath) {
     setKeysPatten(options);
     switch (path.extname(_filePath)) {
     case '.js':
+    case '.wxs':
         content = content.replace(es6, replaceCallback);
         content = content.replace(es5, replaceCallback);
         break;
     case '.wxml':
         content = content.replace(wxml, replaceCallback);
+        content = content.replace(wxs, replaceCallback);
         break;
     case '.styl':
     case '.css':
@@ -44,7 +47,7 @@ function replaceCallback(match, subMatch) {
         let url = path.join(opt[key], subMatch.slice(subMatch.indexOf('/')));
         return match.replace(
             subMatch,
-            path.relative('..', path.relative(filePath, url)).replace(/\\/g, '/')
+            path.relative(filePath, url).replace(/\\/g, '/').replace(/^\.\.\//, '')
         );
     } else {
         return match;
