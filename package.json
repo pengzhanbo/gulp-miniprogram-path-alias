@@ -15,5 +15,13 @@
   "devDependencies": {
     "gulp-util": "^3.0.8",
     "through2": "^2.0.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://volodymyr-lian@github.com/volodymyr-lian/gulp-miniprogram-path-alias.git"
+  },
+  "bugs": {
+    "url": "https://github.com/volodymyr-lian/gulp-miniprogram-path-alias/issues"
+  },
+  "homepage": "https://github.com/volodymyr-lian/gulp-miniprogram-path-alias#readme"
 }
