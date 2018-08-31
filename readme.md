@@ -1,4 +1,4 @@
-## gulp-minipropram-path-alias
+## gulp-miniprogram-path-alias
 
 小程序 依赖引用路径别名
 
