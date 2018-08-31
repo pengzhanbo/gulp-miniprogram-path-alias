@@ -4,7 +4,7 @@
 
 ### Install
 ``` bash
-npm install --save-dev gulp-minipropram-path-alias
+npm install --save-dev gulp-miniprogram-path-alias
 ```
 
 ### Usage
