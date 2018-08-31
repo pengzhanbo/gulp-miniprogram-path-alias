@@ -11,7 +11,7 @@ npm install --save-dev gulp-minipropram-path-alias
 
 Add it to your `gulpfile.js`
 ``` js
-var alias = require('gulp-minipropram-path-alias');
+var alias = require('gulp-miniprogram-path-alias');
 gulp.task('alias', function () {
     gulp.src('src/**/*.js')
         .pipe(alias({
