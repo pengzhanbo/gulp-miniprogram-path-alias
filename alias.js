@@ -28,6 +28,10 @@ module.exports = function alias(options, content, _filePath) {
         content = content.replace(wxs, replaceCallback);
         break;
     case '.styl':
+    case '.stylus':
+    case '.less':
+    case '.sass':
+    case '.scss':
     case '.css':
     case '.wxss':
         content = content.replace(css, replaceCallback);

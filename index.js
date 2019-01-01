@@ -1,6 +1,3 @@
-/**
- * 文件路径依赖别名
- */
 let through = require('through2');
 var gutil = require('gulp-util');
 var alias = require('./alias');
