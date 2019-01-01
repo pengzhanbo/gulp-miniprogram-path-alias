@@ -11,9 +11,9 @@ npm install --save-dev gulp-miniprogram-path-alias
 
 ``` bash
 .
-├── src # 开发目录
-│   └── common #公共功能模块，管理功能功能模块，与业务交互有一定相关的模块
-└── gulpfile.js # 别名配置
+├── src 
+│   └── common
+└── gulpfile.js
 ```
 
 在你的 `gulpfile.js` 添加一个 `task`
