@@ -1,11 +1,10 @@
-var path = require('path');
+let path = require('path');
 
 // js
 let es5 = /require\(['"](.*?)['"]\)/g;
 let es6 = /from\s+['"](.*?)['"]/g;
-// wxml
-let wxml = /<import\s+src=['"](.*?)['"]\s+\/>/g;
-let wxs = /<wxs\s+src=['"](.*?)['"]\s+.*?\s+\/>/g
+// wxml : import|wxs|image|audio|video|live-player|live-pusher|web-view
+let wxml = /(?:src|url|poster)=['"](.*?)['"]/g;
 // css
 let css = /@import\s+['"](.*?)['"]/g;
 
@@ -13,10 +12,10 @@ let keysPattern;
 let opt;
 let filePath;
 
-module.exports = function alias(options, content, _filePath) {
+function alias(options, content, _filePath) {
     opt = options = options || {};
     filePath = _filePath;
-    setKeysPatten(options);
+    setKeysPattern(options);
     switch (path.extname(_filePath)) {
     case '.js':
     case '.wxs':
@@ -25,7 +24,6 @@ module.exports = function alias(options, content, _filePath) {
         break;
     case '.wxml':
         content = content.replace(wxml, replaceCallback);
-        content = content.replace(wxs, replaceCallback);
         break;
     case '.styl':
     case '.stylus':
@@ -40,7 +38,7 @@ module.exports = function alias(options, content, _filePath) {
     return content;
 };
 
-function setKeysPatten(options) {
+function setKeysPattern(options) {
     options = options || {};
     keysPattern = keysPattern || new RegExp('^(' + Object.keys(options).join('|') + ')');
 }
@@ -51,9 +49,11 @@ function replaceCallback(match, subMatch) {
         let url = path.join(opt[key], subMatch.slice(subMatch.indexOf('/')));
         return match.replace(
             subMatch,
-            path.relative(filePath, url).replace(/\\/g, '/').replace(/^\.\.\//, '')
+            /^https?:\/\//.test(opt[key]) ? url : path.relative(filePath, url).replace(/\\/g, '/').replace(/^\.\.\//, '')
         );
     } else {
         return match;
     }
 }
+
+module.exports = alias;
