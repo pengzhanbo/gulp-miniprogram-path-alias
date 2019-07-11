@@ -2,7 +2,7 @@ let path = require('path');
 
 // js
 let es5 = /require\(['"](.*?)['"]\)/g;
-let es6 = /from\s+['"](.*?)['"]/g;
+let es6 = /(?:from|import)\s+['"](.*?)['"]/g;
 // wxml : import|wxs|image|audio|video|live-player|live-pusher|web-view
 let wxml = /(?:src|url|poster)=['"](.*?)['"]/g;
 // css

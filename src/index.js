@@ -1,5 +1,5 @@
 let through = require('through2');
-var gUtil = require('gulp-util');
+var PluginError = require('plugin-error');
 var alias = require('./alias');
 
 module.exports = function (options) {
@@ -8,7 +8,7 @@ module.exports = function (options) {
             return cb(null, file);
         }
         if (file.isStream()) {
-            return cb(new gUtil.PluginError('gulp-miniprogram-path-alias', 'stream not supported'));
+            return cb(new PluginError('gulp-miniprogram-path-alias', 'stream not supported'));
         }
         var content = file.contents.toString('utf8');
         content = alias(options, content, file.path);
